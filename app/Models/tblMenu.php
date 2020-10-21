@@ -11,6 +11,6 @@ class tblMenu extends Model
 
     protected $fillable = [
         'id', 'item_name', 'item_description', 'item_rate',
-        'menu_category_id', 'branch_id'
+        'menu_category_id', 'branch_id', 'add-ons-id'
     ];
 }

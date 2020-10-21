@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('simple-qr-code', function () {
+    return QrCode::size(200)->generate('Table no.22');
+});
+
+Route::get('qrCode/{data}',[TableController::class,'text']);
