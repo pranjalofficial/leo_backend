@@ -20,7 +20,12 @@ class RestarauntsController extends Controller
 
     public function getRestarants(){
         $rest = tblRestaraunts::all();
-        return $rest;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render($rest, $exception);
     }
 
 
@@ -28,7 +33,12 @@ class RestarauntsController extends Controller
     public function getBranches($id){
         $branches = DB::table('tblBranches')->where('rest_id',$id)->get();
 
-        return $branches;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render($branches, $exception);
     }
 
 
@@ -37,21 +47,38 @@ class RestarauntsController extends Controller
         $branch = tblBranch::where('id',$id)->get();
         $temp = $branch->restraunt_id;
         $categories = tblMenuCategory::where('rest_id',$temp)->get();
-        return $categories;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render($categories, $exception);
     }
 
 
     //get resturant menu 
     public function get_menu($id){
         $menu = tblMenu::where('branch_id',$id)->get();
-        return $menu;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+    
+        return parent::render($menu, $exception);
     }
 
 
     //get all the details of addons from branch id
     public function get_addons($id){
         $add_ons = tblAddOns::where('branch_id',$id)->get();
-        return $add_ons;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+    
+        return parent::render($add_ons, $exception);
     }
 
     public function addOrderItem(Request $request){
@@ -66,7 +93,13 @@ class RestarauntsController extends Controller
 
         $orderItem->save();
 
-        return true;
+        
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render(true, $exception);
 
     }
 
@@ -81,7 +114,12 @@ class RestarauntsController extends Controller
             $order->save();
         }
 
-        return true;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render(true, $exception);
     }
 
     //login
@@ -111,7 +149,12 @@ class RestarauntsController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return true;
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+        return parent::render(true, $exception);
 
     }
 
