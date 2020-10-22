@@ -17,7 +17,7 @@ class TblRestaurants extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('name');
-            $table->double('descp');
+            $table->text('descp');
             $table->string('img');
             $table->timestamps();
         });

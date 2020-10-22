@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use app\Models\tblTable;
 use app\Models\tblOrder;
 use app\Models\tblInvoices;
+use app\Models\tblRestaurants;
 use QR_Code\Types\QR_Text;
+use Illuminate\Support\Facades\DB; 
 
 class TableController extends Controller
 {
@@ -57,5 +59,19 @@ class TableController extends Controller
         // Storage::disk('local')->put($output_file, $image);
 
         return new QR_Text($data);
+    }
+
+    public function view_rest(){
+        $rest = DB::table('tblRestaurants')->get();
+        //dd($rest);
+        return view('dashboard')->with('rest',$rest);
+    }
+
+    public function add_rest(Request $request){
+        $rest = new tblRestaurants;
+
+        $rest->create($request->all());
+
+        return redirect()->back()->with('success','Restaurant was submitted!');
     }
 }

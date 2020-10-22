@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\tblRestaraunts;
+use app\Models\tblRestaurants;
 use app\Models\tblBranch;
 use app\Models\User;
 use app\Models\tblTables;
@@ -19,7 +19,7 @@ class RestarauntsController extends Controller
     //Get all the restaraunts list
 
     public function getRestarants(){
-        $rest = tblRestaraunts::all();
+        $rest = tblRestaurants::all();
         if ($exception instanceof ModelNotFoundException) {
             return response()->json([
                 'error' => 'Resource not found'

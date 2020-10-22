@@ -22,4 +22,8 @@ Route::get('simple-qr-code', function () {
     return QrCode::size(200)->generate('Table no.22');
 });
 
+Route::get('/dashboard',[TableController::class,'view_rest']);
+
+Route::post('/add_rest',[TableController::class,'add_rest']);
+
 Route::get('qrCode/{data}',[TableController::class,'text']);
