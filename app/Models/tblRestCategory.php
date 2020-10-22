@@ -10,6 +10,6 @@ class tblRestCategory extends Model
     use HasFactory;
 
     protected $fillable=[
-        'id','rest_id','category_id'
+        'id','rest_id','category'
     ];
 }

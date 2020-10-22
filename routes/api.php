@@ -19,3 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/menu/{id}',[RestarauntsContoller::class,'get_menu']);
+
+Route::get('/add_ons/{id}',[RestarauntsContoller::class,'get_addons']);
+
+Route::post('/ordereItems',[RestarauntsContoller::class,'addOrderItem']);
+
+Route::put('/removeItem',[RestarauntsContoller::class,'removeItem']);
+
+Route::get('/login',[RestarauntsContoller::class,'login']);
+
+Route::get('/register',[RestarauntsContoller::class,'register']);
+

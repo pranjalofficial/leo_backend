@@ -10,6 +10,6 @@ class tblRestaurants extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'name', 'img', 
+        'id', 'name','descp', 'img', 
     ];
 }

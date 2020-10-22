@@ -10,7 +10,7 @@ class tblMenu extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'item_name', 'item_description', 'item_rate',
-        'menu_category_id', 'branch_id', 'add-ons-id'
+        'id', 'item_name', 'item_description', 'item_rate','item_img',
+        'menu_category_id', 'branch_id'
     ];
 }
