@@ -14,7 +14,9 @@ class TableController extends Controller
 {
     //get table details from id 
     public function getTableDetails($id){
-        $table = DB::table('tblTable')->find($id);
+        $table = DB::table('tblTables')->where('branch_id',$id)->get();
+        return view('tables')->with('table',$table);
+
     }
 
     //insert order into table
@@ -67,11 +69,24 @@ class TableController extends Controller
         return view('dashboard')->with('rest',$rest);
     }
 
+    public function view_branch(){
+        $branch = DB::table('tblBranch')->get();
+        return view('branch')->with('branch',$branch);
+    }
+
     public function add_rest(Request $request){
         $rest = new tblRestaurants;
 
         $rest->create($request->all());
 
         return redirect()->back()->with('success','Restaurant was submitted!');
+    }
+
+    public function show_order($id){
+
+        $order = DB::table('tblOrderList')->where('table_id', $id)->get();
+
+        return view('order')->with('order',$order);
+
     }
 }

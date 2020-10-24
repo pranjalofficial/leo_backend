@@ -1,10 +1,10 @@
 @extends('welcome')
 
 @isset($rest)
-
-
+@if($rest ?? '')
 <button class= "btn btn-primary" (click)="openForm()">Add Resturants</button> 
 <table class="table table-dark">
+  <h1>Resturants</h1>
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -16,7 +16,7 @@
     <tbody>
       <tr>
         @foreach ($rest as $item)
-        <th scope="row">{{$item->id}}</th>
+        <th scope="row"><a class="btn btn-success" href="/branch">{{$item->id}}</a></th>
         <td>{{$item->name}}</td>
         <td>{{$item->descp}}</td>
         <td><img src={{$item->img}}></td>
@@ -24,9 +24,12 @@
       </tr>
     </tbody>
   </table>
+  @else
+  <h2>No restaraunts</h2>
+  @endIf
+  @endisset
 
-
-  <form style="display:block">
+  {{-- <form style="display:block">
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -41,12 +44,11 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </form> --}}
 
-  <script>
+  {{-- <script>
       openForm(){
 
       }
-  </script>
+  </script> --}}
     
-@endisset

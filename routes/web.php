@@ -27,3 +27,11 @@ Route::get('/dashboard',[TableController::class,'view_rest']);
 Route::post('/add_rest',[TableController::class,'add_rest']);
 
 Route::get('qrCode/{data}',[TableController::class,'text']);
+
+Route::get('/rest1',[RestarauntsContoller::class,'getRestarants']);
+
+Route::get('branch',[TableController::class,'view_branch']);
+
+Route::get('/branch/table/{id}',[TableController::class,'getTableDetails']);
+
+Route::get('/table/order/{id}',[TableController::class,'show_order']);
