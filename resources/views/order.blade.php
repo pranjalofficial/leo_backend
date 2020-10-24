@@ -1,6 +1,7 @@
 @extends('welcome')
 <div style="display: none">
-	{{ $total = 0 }}
+    {{ $total = 0 }}
+    {{ $final = 0 }}
 </div>
 
 @isset($order)
@@ -32,6 +33,27 @@
                 <td></td>
                 <td>Total</td>
                 <td>{{$total}}</td>
+            </tr>
+
+            <tr>
+                <th scope="row" ></th>
+                <td></td>
+                <td>5% CGST</td>
+                <td>{{$total * 0.05}}</td>
+            </tr>
+
+            <tr>
+                <th scope="row" ></th>
+                <td></td>
+                <td>5% SGST</td>
+                <td>{{$total * 0.05}}</td>
+            </tr>
+
+            <tr>
+                <th scope="row" ></th>
+                <td></td>
+                <td>5% SGST</td>
+                <td>{{$final = $total + $total * 0.05 + $total * 0.05}}</td>
             </tr>
 
           </tbody>
