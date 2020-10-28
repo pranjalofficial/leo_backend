@@ -123,4 +123,20 @@ class RestarauntsController extends Controller
 
     }
 
+    public function OldCart($id)
+    {
+        $oldCart = DB::table('tblInvoices')
+        ->where('cust_id',$id)->get();
+
+        return $oldCart;
+    }
+
+    public function OldOrder($id)
+    {
+        $OldOrder = DB::table('tblOrderList')
+        ->where('invoice_id',$id)->get();
+
+        return $OldOrder;
+    }
+
 }

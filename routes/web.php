@@ -35,3 +35,9 @@ Route::get('branch',[TableController::class,'view_branch']);
 Route::get('/branch/table/{id}',[TableController::class,'getTableDetails']);
 
 Route::get('/table/order/{id}',[TableController::class,'show_order']);
+
+Route::get('/minu/order/{id}',[TableController::class,'minus']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

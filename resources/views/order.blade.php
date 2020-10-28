@@ -21,7 +21,7 @@
             <tr>
               <th scope="row"><a class="btn btn-success">{{$item->item_name}}</a></th>
               <td>{{$item->item_cost}}</td>
-              <td><a class="btn btn-light">-</a>{{$item->item_count}}<a class="btn btn-light">+</a></td>
+              <td><a class="btn btn-primary" href="{{url('/minus/order/'.$item->id)}}" >-</a><span style="padding: 2%">{{$item->item_count}}</span><a class="btn btn-primary">+</a></td>
               <td>{{$item->item_total}}</td>
             </tr>
             @endforeach
